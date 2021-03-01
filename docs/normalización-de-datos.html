@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Proyecto final RNA-seq</title>
-  <meta name="description" content="Proyecto final RNA-seq" />
+  <title>Chapter 6 Normalización de datos | Proyecto final RNA-seq</title>
+  <meta name="description" content="Chapter 6 Normalización de datos | Proyecto final RNA-seq" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Proyecto final RNA-seq" />
+  <meta property="og:title" content="Chapter 6 Normalización de datos | Proyecto final RNA-seq" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Proyecto final RNA-seq" />
+  <meta name="twitter:title" content="Chapter 6 Normalización de datos | Proyecto final RNA-seq" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="especificaciones.html"/>
+<link rel="prev" href="limpieza-de-datos.html"/>
+<link rel="next" href="expresión-diferencial.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -161,16 +161,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Proyecto final RNA-seq</h1>
-<p class="author"><em>Salvador González Juárez</em></p>
-<p class="date"><em>2021-03-01</em></p>
-</div>
-<div id="proyecto" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> <span style="color:darkblue">Proyecto</span></h1>
-<p>Universidad Nacional Autónoma de México - Licenciatura en ciencias genómicas</p>
-<p>Bioinformática y Estadística 2 2021 - Análisis de datos de secuenciación masiva (Dr. Leonardo Collado)</p>
-<p><strong>Salvador González Juárez</strong></p>
+<div id="normalización-de-datos" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> <span style="color:orange">Normalización de datos</span></h1>
+<p>Es necesario normalizar los datos asumiendo que la mayoria de los genes no se estan expresando diferencialmente. El objetivo es redudir la incidencia de falsos positivos.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="normalización-de-datos.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construyo un objeto con el cual se podran normalizar los datos</span></span>
+<span id="cb62-2"><a href="normalización-de-datos.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;edgeR&quot;</span>)</span></code></pre></div>
+<pre><code>## Loading required package: limma</code></pre>
+<pre><code>## 
+## Attaching package: &#39;limma&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:BiocGenerics&#39;:
+## 
+##     plotMA</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="normalización-de-datos.html#cb66-1" aria-hidden="true" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">DGEList</span>(</span>
+<span id="cb66-2"><a href="normalización-de-datos.html#cb66-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">counts =</span> <span class="fu">assay</span>(rse_gene, <span class="st">&quot;counts&quot;</span>),</span>
+<span id="cb66-3"><a href="normalización-de-datos.html#cb66-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">genes =</span> <span class="fu">rowData</span>(rse_gene))</span>
+<span id="cb66-4"><a href="normalización-de-datos.html#cb66-4" aria-hidden="true" tabindex="-1"></a>dge <span class="ot">&lt;-</span> <span class="fu">calcNormFactors</span>(dge)</span></code></pre></div>
 <hr />
 </div>
             </section>
@@ -178,8 +183,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="especificaciones.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="limpieza-de-datos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="expresión-diferencial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

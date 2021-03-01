@@ -1,1 +1,10 @@
 para-que-funcione
+proyecto
+especificaciones
+proyecto-escogido
+datos-de-srp115956
+limpieza-de-datos
+normalización-de-datos
+expresión-diferencial
+conclusiones
+referencias

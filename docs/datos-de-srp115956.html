@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Datos de SRP115956 | Proyecto final RNA-seq</title>
+  <meta name="description" content="Chapter 4 Datos de SRP115956 | Proyecto final RNA-seq" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Datos de SRP115956 | Proyecto final RNA-seq" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Datos de SRP115956 | Proyecto final RNA-seq" />
+  
+  
+  
+
+<meta name="author" content="Salvador González Juárez" />
+
+
+<meta name="date" content="2021-03-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="proyecto-escogido.html"/>
+<link rel="next" href="limpieza-de-datos.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RNA-seq</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> <span style="color:darkblue">Proyecto</span></a></li>
+<li class="chapter" data-level="2" data-path="especificaciones.html"><a href="especificaciones.html"><i class="fa fa-check"></i><b>2</b> <span style="color:orange">Especificaciones:</span></a></li>
+<li class="chapter" data-level="3" data-path="proyecto-escogido.html"><a href="proyecto-escogido.html"><i class="fa fa-check"></i><b>3</b> <span style="color:orange">Proyecto escogido:</span></a></li>
+<li class="chapter" data-level="4" data-path="datos-de-srp115956.html"><a href="datos-de-srp115956.html"><i class="fa fa-check"></i><b>4</b> <span1 style="color:orange">Datos de SRP115956</span></a></li>
+<li class="chapter" data-level="5" data-path="limpieza-de-datos.html"><a href="limpieza-de-datos.html"><i class="fa fa-check"></i><b>5</b> <span style="color:orange">Limpieza de datos</span></a></li>
+<li class="chapter" data-level="6" data-path="normalización-de-datos.html"><a href="normalización-de-datos.html"><i class="fa fa-check"></i><b>6</b> <span style="color:orange">Normalización de datos</span></a></li>
+<li class="chapter" data-level="7" data-path="expresión-diferencial.html"><a href="expresión-diferencial.html"><i class="fa fa-check"></i><b>7</b> <span style="color:orange">Expresión diferencial</span></a></li>
+<li class="chapter" data-level="8" data-path="conclusiones.html"><a href="conclusiones.html"><i class="fa fa-check"></i><b>8</b> <span style="color:orange">Conclusiones</span></a></li>
+<li class="chapter" data-level="9" data-path="referencias.html"><a href="referencias.html"><i class="fa fa-check"></i><b>9</b> <span style="color:orange">Referencias</span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Proyecto final RNA-seq</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="datos-de-srp115956" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> <span1 style="color:orange">Datos de SRP115956</span></h1>
+<p>Voy a usar datos de <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5734943/">10.1038/nm.4386</a> procesados con <strong>recount3</strong>. Por lo tanto, descargo los datos con los siguientes comandos:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="datos-de-srp115956.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar el paquete de recount3</span></span>
+<span id="cb1-2"><a href="datos-de-srp115956.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;recount3&quot;</span>)</span></code></pre></div>
+<pre><code>## Loading required package: SummarizedExperiment</code></pre>
+<pre><code>## Loading required package: MatrixGenerics</code></pre>
+<pre><code>## Loading required package: matrixStats</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MatrixGenerics&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:matrixStats&#39;:
+## 
+##     colAlls, colAnyNAs, colAnys, colAvgsPerRowSet, colCollapse,
+##     colCounts, colCummaxs, colCummins, colCumprods, colCumsums,
+##     colDiffs, colIQRDiffs, colIQRs, colLogSumExps, colMadDiffs,
+##     colMads, colMaxs, colMeans2, colMedians, colMins, colOrderStats,
+##     colProds, colQuantiles, colRanges, colRanks, colSdDiffs, colSds,
+##     colSums2, colTabulates, colVarDiffs, colVars, colWeightedMads,
+##     colWeightedMeans, colWeightedMedians, colWeightedSds,
+##     colWeightedVars, rowAlls, rowAnyNAs, rowAnys, rowAvgsPerColSet,
+##     rowCollapse, rowCounts, rowCummaxs, rowCummins, rowCumprods,
+##     rowCumsums, rowDiffs, rowIQRDiffs, rowIQRs, rowLogSumExps,
+##     rowMadDiffs, rowMads, rowMaxs, rowMeans2, rowMedians, rowMins,
+##     rowOrderStats, rowProds, rowQuantiles, rowRanges, rowRanks,
+##     rowSdDiffs, rowSds, rowSums2, rowTabulates, rowVarDiffs, rowVars,
+##     rowWeightedMads, rowWeightedMeans, rowWeightedMedians,
+##     rowWeightedSds, rowWeightedVars</code></pre>
+<pre><code>## Loading required package: GenomicRanges</code></pre>
+<pre><code>## Loading required package: stats4</code></pre>
+<pre><code>## Loading required package: BiocGenerics</code></pre>
+<pre><code>## Loading required package: parallel</code></pre>
+<pre><code>## 
+## Attaching package: &#39;BiocGenerics&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:parallel&#39;:
+## 
+##     clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+##     clusterExport, clusterMap, parApply, parCapply, parLapply,
+##     parLapplyLB, parRapply, parSapply, parSapplyLB</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     IQR, mad, sd, var, xtabs</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     anyDuplicated, append, as.data.frame, basename, cbind, colnames,
+##     dirname, do.call, duplicated, eval, evalq, Filter, Find, get, grep,
+##     grepl, intersect, is.unsorted, lapply, Map, mapply, match, mget,
+##     order, paste, pmax, pmax.int, pmin, pmin.int, Position, rank,
+##     rbind, Reduce, rownames, sapply, setdiff, sort, table, tapply,
+##     union, unique, unsplit, which.max, which.min</code></pre>
+<pre><code>## Loading required package: S4Vectors</code></pre>
+<pre><code>## 
+## Attaching package: &#39;S4Vectors&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:base&#39;:
+## 
+##     expand.grid</code></pre>
+<pre><code>## Loading required package: IRanges</code></pre>
+<pre><code>## Loading required package: GenomeInfoDb</code></pre>
+<pre><code>## Loading required package: Biobase</code></pre>
+<pre><code>## Welcome to Bioconductor
+## 
+##     Vignettes contain introductory material; view with
+##     &#39;browseVignettes()&#39;. To cite Bioconductor, see
+##     &#39;citation(&quot;Biobase&quot;)&#39;, and for packages &#39;citation(&quot;pkgname&quot;)&#39;.</code></pre>
+<pre><code>## 
+## Attaching package: &#39;Biobase&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MatrixGenerics&#39;:
+## 
+##     rowMedians</code></pre>
+<pre><code>## The following objects are masked from &#39;package:matrixStats&#39;:
+## 
+##     anyMissing, rowMedians</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="datos-de-srp115956.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encontrar el proyecto de interes</span></span>
+<span id="cb25-2"><a href="datos-de-srp115956.html#cb25-2" aria-hidden="true" tabindex="-1"></a>proj_info <span class="ot">&lt;-</span> <span class="fu">subset</span>(<span class="fu">available_projects</span>(),</span>
+<span id="cb25-3"><a href="datos-de-srp115956.html#cb25-3" aria-hidden="true" tabindex="-1"></a>    project <span class="sc">==</span> <span class="st">&quot;SRP115956&quot;</span> <span class="sc">&amp;</span> project_type <span class="sc">==</span> <span class="st">&quot;data_sources&quot;</span>)</span></code></pre></div>
+<pre><code>## 2021-03-01 00:25:53 caching file sra.recount_project.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:25:54 caching file gtex.recount_project.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:25:56 caching file tcga.recount_project.MD.gz.</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="datos-de-srp115956.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un objetio de tipo RangedSummarizedExperiment (RSE) con la informacion a nivel de genes</span></span>
+<span id="cb29-2"><a href="datos-de-srp115956.html#cb29-2" aria-hidden="true" tabindex="-1"></a>rse_gene <span class="ot">&lt;-</span> <span class="fu">create_rse</span>(proj_info)</span></code></pre></div>
+<pre><code>## 2021-03-01 00:26:05 downloading and reading the metadata.</code></pre>
+<pre><code>## 2021-03-01 00:26:07 caching file sra.sra.SRP115956.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:08 caching file sra.recount_project.SRP115956.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:10 caching file sra.recount_qc.SRP115956.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:11 caching file sra.recount_seq_qc.SRP115956.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:13 caching file sra.recount_pred.SRP115956.MD.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:15 downloading and reading the feature information.</code></pre>
+<pre><code>## 2021-03-01 00:26:16 caching file human.gene_sums.G026.gtf.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:17 downloading and reading the counts: 263 samples across 63856 features.</code></pre>
+<pre><code>## 2021-03-01 00:26:19 caching file sra.gene_sums.SRP115956.G026.gz.</code></pre>
+<pre><code>## 2021-03-01 00:26:25 construcing the RangedSummarizedExperiment (rse) object.</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="datos-de-srp115956.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explorar el objeto RSE</span></span>
+<span id="cb41-2"><a href="datos-de-srp115956.html#cb41-2" aria-hidden="true" tabindex="-1"></a>rse_gene</span></code></pre></div>
+<pre><code>## class: RangedSummarizedExperiment 
+## dim: 63856 263 
+## metadata(8): time_created recount3_version ... annotation recount3_url
+## assays(1): raw_counts
+## rownames(63856): ENSG00000278704.1 ENSG00000277400.1 ...
+##   ENSG00000182484.15_PAR_Y ENSG00000227159.8_PAR_Y
+## rowData names(10): source type ... havana_gene tag
+## colnames(263): SRR5961814 SRR5961815 ... SRR5961998 SRR5961999
+## colData names(175): rail_id external_id ...
+##   recount_pred.curated.cell_line BigWigURL</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="datos-de-srp115956.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar el objeto RSE original</span></span>
+<span id="cb43-2"><a href="datos-de-srp115956.html#cb43-2" aria-hidden="true" tabindex="-1"></a>rse_gene_original <span class="ot">&lt;-</span> rse_gene</span>
+<span id="cb43-3"><a href="datos-de-srp115956.html#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="datos-de-srp115956.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usar para restablecer el objeto RSE a su forma original</span></span>
+<span id="cb43-5"><a href="datos-de-srp115956.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#rse_gene &lt;- rse_gene_original</span></span></code></pre></div>
+<p>En resumen, los datos transcriptómicos estan representados por <strong>63,856 genes</strong> de <strong>263 muestras</strong>. Ahora, es necesario obtener el número de lecturas para cada una de las muestras, en lugar de los datos a nivel de nucleótidos. Además, con el siguiente código podemos explorar la información contenida en las categorias, que representan variables del experimento.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="datos-de-srp115956.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener los numeros de lecturas</span></span>
+<span id="cb44-2"><a href="datos-de-srp115956.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assay</span>(rse_gene, <span class="st">&quot;counts&quot;</span>) <span class="ot">&lt;-</span> <span class="fu">compute_read_counts</span>(rse_gene)</span>
+<span id="cb44-3"><a href="datos-de-srp115956.html#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="datos-de-srp115956.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Facilitar el uso de la informacion del experimento</span></span>
+<span id="cb44-5"><a href="datos-de-srp115956.html#cb44-5" aria-hidden="true" tabindex="-1"></a>rse_gene <span class="ot">&lt;-</span> <span class="fu">expand_sra_attributes</span>(rse_gene)</span>
+<span id="cb44-6"><a href="datos-de-srp115956.html#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="datos-de-srp115956.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Explorar los parametros del experimento y algunas de sus variables</span></span>
+<span id="cb44-8"><a href="datos-de-srp115956.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(rse_gene)[,</span>
+<span id="cb44-9"><a href="datos-de-srp115956.html#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene)))]</span></code></pre></div>
+<pre><code>## DataFrame with 263 rows and 15 columns
+##            sra_attribute.age sra_attribute.alcool sra_attribute.Cause_of_death
+##                  &lt;character&gt;          &lt;character&gt;                  &lt;character&gt;
+## SRR5961814                44                   NA                      Suicide
+## SRR5961815                29                   no                      Suicide
+## SRR5961816                68                  yes                      Suicide
+## SRR5961817                39                   no                      Suicide
+## SRR5961818                40                   NA                      Suicide
+## ...                      ...                  ...                          ...
+## SRR5961995                53                   no                      Suicide
+## SRR5961996                39                   no                      Suicide
+## SRR5961997                55                  yes                     Accident
+## SRR5961998                38                   NA                      Suicide
+## SRR5961999                25                   NA                      Suicide
+##            sra_attribute.drug_type sra_attribute.drugs sra_attribute.gender
+##                        &lt;character&gt;         &lt;character&gt;          &lt;character&gt;
+## SRR5961814                      NA                  NA               female
+## SRR5961815                      no                  no                 male
+## SRR5961816                      no                  no                 male
+## SRR5961817                      no                  no                 male
+## SRR5961818                      NA                  NA               female
+## ...                            ...                 ...                  ...
+## SRR5961995                      no                  no                 male
+## SRR5961996                      no                  no                 male
+## SRR5961997                      no                  no                 male
+## SRR5961998                      NA                  NA                 male
+## SRR5961999                      NA                  NA               female
+##            sra_attribute.medication_type sra_attribute.medication
+##                              &lt;character&gt;              &lt;character&gt;
+## SRR5961814                            AD                      yes
+## SRR5961815                            no                       no
+## SRR5961816                            NA                       NA
+## SRR5961817                            AD                      yes
+## SRR5961818                            AD                      yes
+## ...                                  ...                      ...
+## SRR5961995                            NA                       NA
+## SRR5961996                            AD                      yes
+## SRR5961997                            no                       no
+## SRR5961998                            NA                       NA
+## SRR5961999                            NA                       NA
+##            sra_attribute.ph sra_attribute.phenotype sra_attribute.pmi
+##                 &lt;character&gt;             &lt;character&gt;       &lt;character&gt;
+## SRR5961814             6.73                    CTRL              29.5
+## SRR5961815             6.96                     MDD                27
+## SRR5961816             6.93                     MDD                32
+## SRR5961817             6.37                     MDD              18.5
+## SRR5961818             6.81                     MDD              49.5
+## ...                     ...                     ...               ...
+## SRR5961995             6.91                     MDD              33.5
+## SRR5961996                6                     MDD                19
+## SRR5961997             6.75                    CTRL                24
+## SRR5961998             6.86                     MDD                30
+## SRR5961999             6.73                     MDD                20
+##            sra_attribute.rin sra_attribute.smoking sra_attribute.source_name
+##                  &lt;character&gt;           &lt;character&gt;               &lt;character&gt;
+## SRR5961814               7.3                    NA          postmortem brain
+## SRR5961815               5.7           yes (heavy)          postmortem brain
+## SRR5961816               8.8           yes (heavy)          postmortem brain
+## SRR5961817               6.8                    no          postmortem brain
+## SRR5961818               7.8                    NA          postmortem brain
+## ...                      ...                   ...                       ...
+## SRR5961995               7.7                    NA          postmortem brain
+## SRR5961996               4.9           yes (heavy)          postmortem brain
+## SRR5961997               4.4                    NA          postmortem brain
+## SRR5961998               7.7                    NA          postmortem brain
+## SRR5961999               8.1                    NA          postmortem brain
+##              sra_attribute.tissue
+##                       &lt;character&gt;
+## SRR5961814 Orbitofrontal (OFC; ..
+## SRR5961815 Orbitofrontal (OFC; ..
+## SRR5961816 Orbitofrontal (OFC; ..
+## SRR5961817 Orbitofrontal (OFC; ..
+## SRR5961818 Orbitofrontal (OFC; ..
+## ...                           ...
+## SRR5961995 Nucleus Accumbens (N..
+## SRR5961996 Nucleus Accumbens (N..
+## SRR5961997 Nucleus Accumbens (N..
+## SRR5961998 Nucleus Accumbens (N..
+## SRR5961999 Nucleus Accumbens (N..</code></pre>
+<p>De estas categorias, elegí como variable categórica el fenotipo, el cual se refiere a si el individuo presentaba el MDD o no. Además, me pareció interesante analizar el género de los individuos, ya que precisamente el estudio encontró, en esta categoría, diferencias significativas. Por último, la variable que tambien me llamó la atención es la causa de muerte, ya que algunos de los individuos se suicidaron, y esto podría tener una fuerte relación con el transtorno.</p>
+<p>Los datos de estas variables, junto con el de las variables numéricas de edad del individuo y el número de integridad del RNA (RIN por sus siglas en inglés), deben ser corregidas como se muestra en el siguiente código. A continuación, presento el resumen de algunas de las variables, incluyendo las de mi interés.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="datos-de-srp115956.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pasar de character a nuemric o factor</span></span>
+<span id="cb46-2"><a href="datos-de-srp115956.html#cb46-2" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>sra_attribute.phenotype <span class="ot">&lt;-</span> <span class="fu">factor</span>(rse_gene<span class="sc">$</span>sra_attribute.phenotype)</span>
+<span id="cb46-3"><a href="datos-de-srp115956.html#cb46-3" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>sra_attribute.gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(rse_gene<span class="sc">$</span>sra_attribute.gender)</span>
+<span id="cb46-4"><a href="datos-de-srp115956.html#cb46-4" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>sra_attribute.age <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene<span class="sc">$</span>sra_attribute.age)</span>
+<span id="cb46-5"><a href="datos-de-srp115956.html#cb46-5" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>sra_attribute.rin <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(rse_gene<span class="sc">$</span>sra_attribute.rin)</span>
+<span id="cb46-6"><a href="datos-de-srp115956.html#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="datos-de-srp115956.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen de las variables de interes</span></span>
+<span id="cb46-8"><a href="datos-de-srp115956.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.data.frame</span>(<span class="fu">colData</span>(rse_gene)[,</span>
+<span id="cb46-9"><a href="datos-de-srp115956.html#cb46-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grepl</span>(<span class="st">&quot;^sra_attribute.[phenotype|gender|age|rin]&quot;</span>, <span class="fu">colnames</span>(<span class="fu">colData</span>(rse_gene)))]))</span></code></pre></div>
+<pre><code>##  sra_attribute.age sra_attribute.alcool sra_attribute.drug_type
+##  Min.   :19.00     Length:263           Length:263             
+##  1st Qu.:38.00     Class :character     Class :character       
+##  Median :46.00     Mode  :character     Mode  :character       
+##  Mean   :46.63                                                 
+##  3rd Qu.:55.00                                                 
+##  Max.   :82.00                                                 
+##  sra_attribute.drugs sra_attribute.gender sra_attribute.ph  
+##  Length:263          female:122           Length:263        
+##  Class :character    male  :141           Class :character  
+##  Mode  :character                         Mode  :character  
+##                                                             
+##                                                             
+##                                                             
+##  sra_attribute.phenotype sra_attribute.pmi  sra_attribute.rin
+##  CTRL:122                Length:263         Min.   :4.300    
+##  MDD :141                Class :character   1st Qu.:6.400    
+##                          Mode  :character   Median :7.300    
+##                                             Mean   :7.108    
+##                                             3rd Qu.:7.700    
+##                                             Max.   :9.400    
+##  sra_attribute.tissue
+##  Length:263          
+##  Class :character    
+##  Mode  :character    
+##                      
+##                      
+## </code></pre>
+<p>La categoría de causa de muerte no es categórica, ya que hay múltiples opciones en ella. Por lo tanto, las voy a asignar como suicidio o no suicidio. Esta clasificación si es apropiada, ya que solo hay dos opciones.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="datos-de-srp115956.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Encontraremos diferencias entre muestra prenatalas vs postnatales</span></span>
+<span id="cb48-2"><a href="datos-de-srp115956.html#cb48-2" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>death <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">ifelse</span>(rse_gene<span class="sc">$</span>sra_attribute.Cause_of_death <span class="sc">==</span> <span class="st">&quot;Suicide&quot;</span>, <span class="st">&quot;suicide&quot;</span>, <span class="st">&quot;no suicide&quot;</span>))</span>
+<span id="cb48-3"><a href="datos-de-srp115956.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(rse_gene<span class="sc">$</span>death)</span></code></pre></div>
+<pre><code>## 
+## no suicide    suicide 
+##         60        203</code></pre>
+<p>Con base en las variables de control de calidad se divide el número de lecturas asignadas a los genes entre el número de lecturas totales, lo cual resulta en la proporción de lecturas asignadas a los genes y facilita la identificación de muestras malas.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="datos-de-srp115956.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver el resumen de los niveles de expresion    </span></span>
+<span id="cb50-2"><a href="datos-de-srp115956.html#cb50-2" aria-hidden="true" tabindex="-1"></a>rse_gene<span class="sc">$</span>assigned_gene_prop <span class="ot">&lt;-</span> rse_gene<span class="sc">$</span>recount_qc.gene_fc_count_all.assigned <span class="sc">/</span> rse_gene<span class="sc">$</span>recount_qc.gene_fc_count_all.total</span>
+<span id="cb50-3"><a href="datos-de-srp115956.html#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rse_gene<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2915  0.3704  0.3985  0.4060  0.4329  0.5841</code></pre>
+<p>Una forma útil para interpretarlo es mediante una gráfica RIN como la siguiente. En ella se puede observar que algunas muestras no son lo suficientemente buenas, por lo que se deberá considerar para la limpieza de datos.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="datos-de-srp115956.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar los niveles de expresion RIN</span></span>
+<span id="cb52-2"><a href="datos-de-srp115956.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene), <span class="fu">plot</span>(assigned_gene_prop, sra_attribute.rin))</span>
+<span id="cb52-3"><a href="datos-de-srp115956.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.37</span>,<span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Por último, analicé como varían los resultados entre los dos fenotipos usando el siguiente código. Al parecer no hay mucha diferencia entre ambas condiciones.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="datos-de-srp115956.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Checar si hay una diferencia entre los grupos</span></span>
+<span id="cb53-2"><a href="datos-de-srp115956.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene), <span class="fu">tapply</span>(assigned_gene_prop, sra_attribute.phenotype, summary))</span></code></pre></div>
+<pre><code>## $CTRL
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.3127  0.3666  0.3965  0.4032  0.4399  0.5820 
+## 
+## $MDD
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.2915  0.3755  0.4005  0.4083  0.4236  0.5841</code></pre>
+<hr />
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="proyecto-escogido.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="limpieza-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Salvador04/ProyectoFinal_RNA-seq/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/Salvador04/ProyectoFinal_RNA-seq/blob/master/index.Rmd",
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

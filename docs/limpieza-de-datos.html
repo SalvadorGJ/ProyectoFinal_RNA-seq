@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Proyecto final RNA-seq</title>
-  <meta name="description" content="Proyecto final RNA-seq" />
+  <title>Chapter 5 Limpieza de datos | Proyecto final RNA-seq</title>
+  <meta name="description" content="Chapter 5 Limpieza de datos | Proyecto final RNA-seq" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Proyecto final RNA-seq" />
+  <meta property="og:title" content="Chapter 5 Limpieza de datos | Proyecto final RNA-seq" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Proyecto final RNA-seq" />
+  <meta name="twitter:title" content="Chapter 5 Limpieza de datos | Proyecto final RNA-seq" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="especificaciones.html"/>
+<link rel="prev" href="datos-de-srp115956.html"/>
+<link rel="next" href="normalización-de-datos.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -161,16 +161,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Proyecto final RNA-seq</h1>
-<p class="author"><em>Salvador González Juárez</em></p>
-<p class="date"><em>2021-03-01</em></p>
-</div>
-<div id="proyecto" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> <span style="color:darkblue">Proyecto</span></h1>
-<p>Universidad Nacional Autónoma de México - Licenciatura en ciencias genómicas</p>
-<p>Bioinformática y Estadística 2 2021 - Análisis de datos de secuenciación masiva (Dr. Leonardo Collado)</p>
-<p><strong>Salvador González Juárez</strong></p>
+<div id="limpieza-de-datos" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> <span style="color:orange">Limpieza de datos</span></h1>
+<p>A continuación, voy a hacer la limpieza de las muestras poco informativas. Observa en la siguiente gráfica la distribución de las muestras.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="limpieza-de-datos.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar nuestro objeto RSE por si luego cambio de opinión</span></span>
+<span id="cb55-2"><a href="limpieza-de-datos.html#cb55-2" aria-hidden="true" tabindex="-1"></a>rse_gene_unfiltered <span class="ot">&lt;-</span> rse_gene</span>
+<span id="cb55-3"><a href="limpieza-de-datos.html#cb55-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-4"><a href="limpieza-de-datos.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Restablecer el objeto RSE a una instancia antes del filtrado</span></span>
+<span id="cb55-5"><a href="limpieza-de-datos.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co">#rse_gene &lt;- rse_gene_unfiltered</span></span>
+<span id="cb55-6"><a href="limpieza-de-datos.html#cb55-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-7"><a href="limpieza-de-datos.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar la distribucion de las muestras</span></span>
+<span id="cb55-8"><a href="limpieza-de-datos.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(rse_gene<span class="sc">$</span>assigned_gene_prop)</span>
+<span id="cb55-9"><a href="limpieza-de-datos.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fl">0.37</span>,<span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Se descartan las uestras que estan por debajo de un umbral de 0.37, el cual representa el primer cuartil. La distribución resultante es la siguiente.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="limpieza-de-datos.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar las muestras de menor calidad</span></span>
+<span id="cb56-2"><a href="limpieza-de-datos.html#cb56-2" aria-hidden="true" tabindex="-1"></a>rse_gene <span class="ot">&lt;-</span> rse_gene[, rse_gene<span class="sc">$</span>assigned_gene_prop <span class="sc">&gt;</span> <span class="fl">0.37</span>]</span>
+<span id="cb56-3"><a href="limpieza-de-datos.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(rse_gene<span class="sc">$</span>assigned_gene_prop)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Es momento de hacer limpieza de genes poco informativos. Las estadísticas de todos los genes son las siguientes.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="limpieza-de-datos.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener estadísticas de la expresión de genes</span></span>
+<span id="cb57-2"><a href="limpieza-de-datos.html#cb57-2" aria-hidden="true" tabindex="-1"></a>gene_means <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(<span class="fu">assay</span>(rse_gene, <span class="st">&quot;counts&quot;</span>))</span>
+<span id="cb57-3"><a href="limpieza-de-datos.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(gene_means)</span></code></pre></div>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+##      0.0      0.2      3.5    403.3     74.5 888097.9</code></pre>
+<p>Se eliminará de nuevo el primer cuartil. Por último, se índica el porcentaje de muestras conservadas depués del filtrado. En este caso, me quede con aproximadamente el 73.4% de los datos originales. De nuevo muestro la gráfica RIN, pero esta vez con los datos filtrados. Al parecer, la calidad de los datos mejoró considerablemente después de la limpieza.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="limpieza-de-datos.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar genes</span></span>
+<span id="cb59-2"><a href="limpieza-de-datos.html#cb59-2" aria-hidden="true" tabindex="-1"></a>rse_gene <span class="ot">&lt;-</span> rse_gene[gene_means <span class="sc">&gt;</span> <span class="fl">0.2</span>, ]</span>
+<span id="cb59-3"><a href="limpieza-de-datos.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">nrow</span>(rse_gene) <span class="sc">/</span> <span class="fu">nrow</span>(rse_gene_unfiltered) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 73.39</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="limpieza-de-datos.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar los niveles de expresion RIN</span></span>
+<span id="cb61-2"><a href="limpieza-de-datos.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(<span class="fu">colData</span>(rse_gene), <span class="fu">plot</span>(assigned_gene_prop, sra_attribute.rin))</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <hr />
 </div>
             </section>
@@ -178,8 +200,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="especificaciones.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="datos-de-srp115956.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="normalización-de-datos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
